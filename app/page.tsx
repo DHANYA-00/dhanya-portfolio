@@ -104,6 +104,7 @@ interface Experience {
   company: string;
   period: string;
   desc: string;
+  certificate?: string;
 }
 
 const experiences: Experience[] = [
@@ -112,6 +113,7 @@ const experiences: Experience[] = [
     company: "KalviumLabs",
     period: "May'26 - June'26",
     desc: "Gained hands-on experience building responsive web interfaces, learning full-stack development workflows, and contributing to software product design.",
+    certificate: "https://drive.google.com/file/d/1FlltT5tJOEA4ANCkbPVF5Sl8ll23jAvx/view?usp=sharing",
   },
   {
     role: "Hackathon Creator (Triplan)",
@@ -150,6 +152,11 @@ interface Certification {
 }
 
 const certifications: Certification[] = [
+  {
+    title: "Software Engineer Internship Completion Certificate",
+    issuer: "KalviumLabs",
+    link: "https://drive.google.com/file/d/1FlltT5tJOEA4ANCkbPVF5Sl8ll23jAvx/view?usp=sharing",
+  },
   {
     title: "Full Stack Development Course Completion Certificate",
     issuer: "Kalvium / VISTAS",
@@ -1085,6 +1092,31 @@ const ExperienceRow = ({ exp, index, isDark, t }: ExperienceRowProps) => {
             <p style={{ color: t.textMuted, fontSize: 13, marginTop: 8, maxWidth: 520, lineHeight: 1.65 }}>{exp.desc}</p>
           </div>
         </div>
+
+        {exp.certificate && (
+          <div style={{ display: "flex", gap: 12, flexShrink: 0, paddingLeft: 48 }} className="md:pl-0">
+            <motion.a
+              href={exp.certificate}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                border: `1px solid ${t.border}`,
+                padding: "10px 20px",
+                borderRadius: 99,
+                fontSize: 11,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: t.textMuted,
+                textDecoration: "none",
+                display: "inline-block",
+              }}
+              whileHover={{ scale: 1.05, borderColor: t.borderHover, color: t.text }}
+              whileTap={{ scale: 0.96 }}
+            >
+              Certificate ↗
+            </motion.a>
+          </div>
+        )}
       </div>
     </motion.div>
   );
