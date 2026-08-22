@@ -563,6 +563,7 @@ export default function Page() {
                     alt="Dhanya Lakshmi profile image"
                     fill
                     priority
+                    sizes="(max-width: 640px) 210px, 250px"
                     style={{ objectPosition: "38% 30%" }}
                     className="object-cover scale-105 hover:scale-110 transition-transform duration-500"
                   />
@@ -682,8 +683,8 @@ export default function Page() {
                 </motion.a>
 
                 <motion.a
-                  href="/images/Dhanya_Lakshmi.pdf"
-                  download
+                  href="/images/Dhanya_Lakshmi.pdf?v=2"
+                  download="Dhanya_Lakshmi_Resume.pdf"
                   style={{ color: t.textMuted, fontSize: 13, letterSpacing: "0.05em", textDecoration: "none" }}
                   whileHover={{ color: t.text }}
                 >
@@ -704,8 +705,8 @@ export default function Page() {
         >
           <span style={{ fontFamily: "monospace", fontSize: 9, color: t.textMuted, letterSpacing: "0.25em", textTransform: "uppercase", writingMode: "vertical-rl" }}>Scroll</span>
           <motion.div
-            style={{ width: 1, height: 48, background: `linear-gradient(180deg, ${t.accent}, transparent)` }}
-            animate={{ scaleY: [0, 1, 0], transformOrigin: "top" }}
+            style={{ width: 1, height: 48, transformOrigin: "top", background: `linear-gradient(180deg, ${t.accent}, transparent)` }}
+            animate={{ scaleY: [0, 1, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           />
         </motion.div>
