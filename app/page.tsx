@@ -19,6 +19,17 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "Browser Automation Agent",
+    tag: "AI & Automation",
+    year: "2026",
+    desc: "A browser automation agent built with Node.js and Playwright. It takes a task written in plain English, looks at the current webpage, decides what to click or type next, does it, and repeats — instead of running a fixed, pre-written script.",
+    accentDark: "#a5d8ff",
+    accentLight: "#2563eb",
+    live: "#",
+    git: "https://github.com/DHANYA-00/Automation",
+    media: "/images/automation.png",
+  },
+  {
     title: "Food Wars",
     tag: "Real-Time Game",
     year: "2025",
@@ -70,6 +81,7 @@ const skills: Skill[] = [
   { name: "Git", cat: "DevOps" },
   { name: "GitHub", cat: "DevOps" },
   { name: "Postman", cat: "Tools" },
+  { name: "Playwright", cat: "Tools" },
   { name: "Bruno", cat: "Tools" },
   { name: "Render", cat: "Tools" },
   { name: "Netlify", cat: "Tools" },
@@ -960,8 +972,8 @@ const AboutStrip = ({ isDark, t }: { isDark: boolean; t: ReturnType<typeof makeT
           className="grid grid-cols-2 gap-4"
         >
           {[
-            { num: "2+", label: "Main Apps Shipped" },
-            { num: "27+", label: "Tools & Skills" },
+            { num: "3+", label: "Main Apps Shipped" },
+            { num: "28+", label: "Tools & Skills" },
             { num: "1", label: "Work Experience" },
             { num: "2028", label: "Graduation Year" },
           ].map((stat, i) => (
