@@ -14,7 +14,6 @@ interface Project {
   accentLight: string;
   live: string;
   git: string;
-  media: string;
 }
 
 const projects: Project[] = [
@@ -27,7 +26,6 @@ const projects: Project[] = [
     accentLight: "#2563eb",
     live: "#",
     git: "https://github.com/DHANYA-00/Automation",
-    media: "/images/automation.png",
   },
   {
     title: "Food Wars",
@@ -38,7 +36,6 @@ const projects: Project[] = [
     accentLight: "#8b5cf6",
     live: "https://foodwars2vs2.netlify.app/",
     git: "https://github.com/DHANYA-00/Food-Wars",
-    media: "/images/foodanimation.mp4",
   },
   {
     title: "Chef-GPT",
@@ -49,7 +46,6 @@ const projects: Project[] = [
     accentLight: "#FF8A5B",
     live: "https://chef-gpt-swart.vercel.app/",
     git: "https://github.com/DHANYA-00/chef-gpt.git",
-    media: "/projects/chef-gpt.gif",
   },
   {
     title: "SmartNews",
@@ -60,7 +56,6 @@ const projects: Project[] = [
     accentLight: "#a855f7",
     live: "#",
     git: "https://github.com/DHANYA-00/Smart-News.git",
-    media: "/projects/newspaper.png",
   },
 ];
 
@@ -728,7 +723,6 @@ export default function Page() {
           initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
-          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={{ fontSize: "clamp(2rem,6vw,4.5rem)", fontWeight: 900, textTransform: "uppercase", lineHeight: 1.05, marginBottom: "3.5rem", color: t.text }}
         >
@@ -748,8 +742,7 @@ export default function Page() {
         <motion.h2
           initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={{ fontSize: "clamp(2rem,6vw,4.5rem)", fontWeight: 900, textTransform: "uppercase", lineHeight: 1.05, marginBottom: "3rem", color: t.text }}
         >
@@ -766,7 +759,6 @@ export default function Page() {
         <motion.h2
           initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={{ fontSize: "clamp(2rem,6vw,4.5rem)", fontWeight: 900, textTransform: "uppercase", lineHeight: 1.05, marginBottom: "3.5rem", color: t.text }}
@@ -787,7 +779,6 @@ export default function Page() {
             <motion.h2
               initial={{ opacity: 0, y: 36 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               style={{ fontSize: "clamp(1.8rem,4vw,3rem)", fontWeight: 900, textTransform: "uppercase", lineHeight: 1.1, marginBottom: "2.5rem", color: t.text }}
@@ -805,7 +796,6 @@ export default function Page() {
             <motion.h2
               initial={{ opacity: 0, y: 36 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               style={{ fontSize: "clamp(1.8rem,4vw,3rem)", fontWeight: 900, textTransform: "uppercase", lineHeight: 1.1, marginBottom: "2.5rem", color: t.text }}
@@ -951,7 +941,6 @@ const AboutStrip = ({ isDark, t }: { isDark: boolean; t: ReturnType<typeof makeT
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -967,7 +956,6 @@ const AboutStrip = ({ isDark, t }: { isDark: boolean; t: ReturnType<typeof makeT
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
           className="grid grid-cols-2 gap-4"
