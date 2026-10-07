@@ -14,7 +14,6 @@ interface Project {
   accentLight: string;
   live: string;
   git: string;
-  media: string;
 }
 
 const projects: Project[] = [
@@ -27,7 +26,6 @@ const projects: Project[] = [
     accentLight: "#2563eb",
     live: "#",
     git: "https://github.com/DHANYA-00/Automation",
-    media: "/images/automation.png",
   },
   {
     title: "Food Wars",
@@ -38,7 +36,16 @@ const projects: Project[] = [
     accentLight: "#8b5cf6",
     live: "https://foodwars2vs2.netlify.app/",
     git: "https://github.com/DHANYA-00/Food-Wars",
-    media: "/images/foodanimation.mp4",
+  },
+  {
+    title: "Chef-GPT",
+    tag: "AI/ML",
+    year: "2025",
+    desc: "An AI chef that can generate recipes, create meal plans, and even critique your cooking. Trained on a massive dataset of recipes and cooking techniques.",
+    accentDark: "#FF8A5B",
+    accentLight: "#FF8A5B",
+    live: "https://chef-gpt-swart.vercel.app/",
+    git: "https://github.com/DHANYA-00/chef-gpt.git",
   },
   {
     title: "SmartNews",
@@ -49,8 +56,7 @@ const projects: Project[] = [
     accentLight: "#a855f7",
     live: "#",
     git: "https://github.com/DHANYA-00/Smart-News.git",
-    media: "/images/newspaper.png",
-  }
+  },
 ];
 
 interface Skill {
@@ -101,14 +107,14 @@ const catColorsDark: Record<string, string> = {
 };
 
 const catColorsLight: Record<string, string> = {
-  Languages: "#6366f1",
-  Frontend: "#7c3aed",
-  Backend: "#a855f7",
-  Mobile: "#db2777",
-  Database: "#2563eb",
-  DevOps: "#4f46e5",
-  Tools: "#0f172a",
-  Design: "#1e1b4b",
+  Languages: "#4A1620",
+  Frontend: "#2F5D62",
+  Backend: "#E3A857",
+  Mobile: "#B7D3A8",
+  Database: "#2F5D62",
+  DevOps: "#E3A857",
+  Tools: "#4A1620",
+  Design: "#2F5D62",
 };
 
 interface Experience {
@@ -197,88 +203,70 @@ function makeTheme(isDark: boolean) {
     nameGrad: "linear-gradient(135deg, #34d399 0%, #c8f5a0 100%)",
   };
   return {
-    text: "#1e1b4b",
-    textMuted: "rgba(30,27,75,0.5)",
-    textFaint: "rgba(30,27,75,0.16)",
-    border: "rgba(124,58,237,0.18)",
-    borderHover: "rgba(124,58,237,0.5)",
-    navBg: "rgba(245,243,255,0.75)",
-    accent: "#7c3aed",
-    accentText: "#ffffff",
-    badgeBg: "#a855f7",
-    cardBg: "rgba(255,255,255,0.6)",
-    statBg: "rgba(255,255,255,0.65)",
-    bigText: "rgba(124,58,237,0.05)",
-    pill: "rgba(124,58,237,0.05)",
-    stripBg: "rgba(255,255,255,0.45)",
-    marqueeColor: "rgba(124,58,237,0.4)",
-    nameGrad: "linear-gradient(135deg, #6366f1 0%, #a855f7 100%)",
+    text: "#4A1620",
+    textMuted: "rgba(74, 22, 32, 0.82)",
+    textFaint: "#2F5D62",
+    border: "rgba(74, 22, 32, 0.22)",
+    borderHover: "rgba(227, 168, 87, 0.85)",
+    navBg: "rgba(242, 235, 217, 0.82)",
+    accent: "#B7D3A8",
+    accentText: "#4A1620",
+    badgeBg: "#E3A857",
+    cardBg: "rgba(47, 93, 98, 0.10)",
+    statBg: "rgba(47, 93, 98, 0.12)",
+    bigText: "rgba(74, 22, 32, 0.055)",
+    pill: "rgba(47, 93, 98, 0.11)",
+    stripBg: "rgba(47, 93, 98, 0.07)",
+    marqueeColor: "rgba(74, 22, 32, 0.38)",
+    nameGrad: "linear-gradient(135deg, #4A1620 0%, #2F5D62 100%)",
   };
 }
 
-/* ─────────────── SKY / WATERFALL BACKGROUND ─── */
-const SkyBackground = () => (
-  <div style={{ position: "fixed", inset: 0, zIndex: -10, overflow: "hidden", pointerEvents: "none" }}>
-    <div style={{
-      position: "absolute", inset: 0,
-      background: "linear-gradient(175deg, #f5f3ff 0%, #fae8ff 25%, #fdfaff 60%, #e0f2fe 100%)",
-    }} />
-    {/* Drifting Clouds */}
-    {[
-      { w: 380, h: 100, l: "8%", t: "6%", op: 0.5, d: 0 },
-      { w: 280, h: 75, l: "52%", t: "13%", op: 0.4, d: 3 },
-      { w: 460, h: 110, l: "22%", t: "23%", op: 0.3, d: 6 },
-      { w: 210, h: 60, l: "74%", t: "4%", op: 0.45, d: 2 },
-      { w: 330, h: 85, l: "3%", t: "40%", op: 0.2, d: 4.5 },
-    ].map((c, i) => (
-      <motion.div key={i}
-        style={{
-          position: "absolute", left: c.l, top: c.t,
-          width: c.w, height: c.h, borderRadius: 9999,
-          background: "rgba(255,255,255,0.72)",
-          filter: "blur(32px)", opacity: c.op,
-        }}
-        animate={{ x: [0, 28, 0], opacity: [c.op, c.op * 1.25, c.op] }}
-        transition={{ duration: 18 + i * 4, repeat: Infinity, delay: c.d, ease: "easeInOut" }}
-      />
-    ))}
-    {/* Waterfall streaks in purple */}
-    {[...Array(14)].map((_, i) => (
-      <motion.div key={`wf-${i}`}
+function SkyBackground({ isDark }: { isDark: boolean }) {
+  if (isDark) {
+    return (
+      <div
         style={{
           position: "absolute",
-          left: `${4 + i * 7}%`,
-          width: i % 3 === 0 ? 2.5 : 1.5,
-          borderRadius: 4,
-          background: "linear-gradient(180deg, transparent 0%, rgba(168,85,247,0.2) 40%, rgba(216,180,254,0.45) 70%, transparent 100%)",
-        }}
-        animate={{ height: ["0vh", "55vh", "0vh"], y: ["0vh", "90vh", "180vh"], opacity: [0, 0.55, 0] }}
-        transition={{
-          duration: 4.5 + (i % 4) * 1.2,
-          repeat: Infinity,
-          delay: i * 0.75 + (i % 3) * 0.4,
-          ease: "easeIn",
+          inset: 0,
+          background:
+            "linear-gradient(175deg, #0f172a 0%, #1e293b 25%, #334155 60%, #475569 100%)",
         }}
       />
-    ))}
-    {/* Shimmer */}
-    <motion.div
+    );
+  }
+  return (
+    <div
       style={{
-        position: "absolute", right: "15%", top: "8%",
-        width: 320, height: 320, borderRadius: 9999,
-        background: "radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(243,232,255,0.3) 50%, transparent 75%)",
-        filter: "blur(20px)",
+        position: "fixed",
+        inset: 0,
+        zIndex: -10,
+        overflow: "hidden",
+        pointerEvents: "none",
       }}
-      animate={{ opacity: [0.6, 1, 0.6], scale: [1, 1.06, 1] }}
-      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-    />
-    {/* Bottom mist */}
-    <div style={{
-      position: "absolute", bottom: 0, left: 0, right: 0, height: "30%",
-      background: "linear-gradient(0deg, rgba(250,232,255,0.6) 0%, rgba(245,243,255,0.3) 55%, transparent 100%)",
-    }} />
-  </div>
-);
+    >
+      <div style={{ position: "absolute", inset: 0, background: "#F2EBD9" }} />
+      <motion.div
+        style={{
+          position: "absolute", left: -220, bottom: "0%",
+          width: 640, height: 640, borderRadius: 9999,
+          background: "radial-gradient(circle, rgba(47,93,98,0.16) 0%, transparent 70%)",
+          filter: "blur(40px)",
+        }}
+        animate={{ scale: [1.08, 1, 1.08] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.06 }}>
+        <defs>
+          <pattern id="g-light" width="60" height="60" patternUnits="userSpaceOnUse">
+            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#4A1620" strokeWidth="0.5" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#g-light)" />
+      </svg>
+    </div>
+  );
+}
 
 /* ─────────────── DARK BACKGROUND ─── */
 const DarkBackground = () => (
@@ -319,7 +307,7 @@ const ThemeToggle = ({ isDark, toggle, t }: ThemeToggleProps) => (
     style={{
       position: "relative", width: 56, height: 28, borderRadius: 99,
       display: "flex", alignItems: "center", padding: "0 4px",
-      background: isDark ? "rgba(255,255,255,0.08)" : "rgba(124,58,237,0.18)",
+      background: isDark ? "rgba(255,255,255,0.08)" : "rgba(47,93,98,0.10)",
       border: `1px solid ${t.border}`,
       cursor: "pointer", outline: "none",
     }}
@@ -375,7 +363,7 @@ const SectionLabel = ({ children, index, t }: SectionLabelProps) => (
 
 /* ═══════════════════════════════════ PAGE ═══ */
 export default function Page() {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const t = makeTheme(isDark);
 
@@ -388,16 +376,16 @@ export default function Page() {
 
   return (
     <div style={{ color: t.text, overflowX: "hidden" }}>
-      {isDark ? <DarkBackground /> : <SkyBackground />}
+      {isDark ? <DarkBackground /> : <SkyBackground isDark={isDark} />}
 
       {/* Unique Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[3px] z-50 origin-left"
         style={{
           scaleX,
-          background: isDark 
+          background: isDark
             ? "linear-gradient(90deg, #10b981, #c8f5a0)"
-            : "linear-gradient(90deg, #6366f1, #a855f7)"
+            : "linear-gradient(90deg, #4A1620, #E3A857)"
         }}
       />
 
@@ -520,7 +508,7 @@ export default function Page() {
             width: 560, height: 560, borderRadius: 9999, pointerEvents: "none",
             background: isDark
               ? "radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%)"
-              : "radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%)",
+              : "none",
             filter: "blur(30px)",
           }}
           animate={{ scale: [1, 1.07, 1] }}
@@ -537,7 +525,7 @@ export default function Page() {
             className="absolute left-[62%] top-0 bottom-0 width-[1px] hidden lg:block"
             style={{
               width: 1,
-              background: isDark ? "rgba(255,255,255,0.04)" : "rgba(124,58,237,0.12)",
+              background: isDark ? "rgba(255,255,255,0.04)" : "rgba(74,22,32,0.12)",
               transformOrigin: "top",
             }}
           />
@@ -556,9 +544,9 @@ export default function Page() {
             >
               <motion.div
                 style={{
-                  border: `1px solid ${t.border}`,
+                  border: isDark ? `1px solid ${t.border}` : "none",
                   borderRadius: 999, // Unique Circle Layout for Profile
-                  background: t.cardBg,
+                  background: isDark ? t.cardBg : "transparent",
                   padding: 10,
                   position: "relative",
                   overflow: "hidden",
@@ -645,7 +633,7 @@ export default function Page() {
                     padding: "6px 16px", borderRadius: 5,
                     background: t.badgeBg, color: t.accentText,
                     fontWeight: 800, fontSize: 12, letterSpacing: "0.02em",
-                    boxShadow: isDark ? "3px 4px 0 rgba(0,0,0,0.5)" : "3px 4px 0 rgba(124,58,237,0.25)",
+                    boxShadow: isDark ? "3px 4px 0 rgba(0,0,0,0.5)" : "3px 4px 0 rgba(74,22,32,0.22)",
                     flexShrink: 0,
                   }}
                 >
@@ -675,7 +663,7 @@ export default function Page() {
                   href="#projects"
                   style={{
                     display: "inline-flex", alignItems: "center", gap: 8,
-                    background: t.text, color: isDark ? "#000" : "#fff",
+                    background: t.text, color: isDark ? "#000" : "#F2EBD9",
                     padding: "14px 30px", borderRadius: 99,
                     fontWeight: 700, fontSize: 13, letterSpacing: "0.05em", textDecoration: "none",
                   }}
@@ -696,7 +684,8 @@ export default function Page() {
 
                 <motion.a
                   href="/images/Dhanya_Lakshmi.pdf?v=2"
-                  download="Dhanya_Lakshmi_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{ color: t.textMuted, fontSize: 13, letterSpacing: "0.05em", textDecoration: "none" }}
                   whileHover={{ color: t.text }}
                 >
@@ -733,7 +722,7 @@ export default function Page() {
         <motion.h2
           initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={{ fontSize: "clamp(2rem,6vw,4.5rem)", fontWeight: 900, textTransform: "uppercase", lineHeight: 1.05, marginBottom: "3.5rem", color: t.text }}
         >
@@ -753,7 +742,7 @@ export default function Page() {
         <motion.h2
           initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={{ fontSize: "clamp(2rem,6vw,4.5rem)", fontWeight: 900, textTransform: "uppercase", lineHeight: 1.05, marginBottom: "3rem", color: t.text }}
         >
@@ -914,7 +903,7 @@ const ProjectRow = ({ project, index, isDark, t }: ProjectRowProps) => {
             <motion.a
               href={project.live} target="_blank"
               style={{
-                background: accent, color: isDark ? "#000" : "#fff",
+                background: accent, color: isDark ? "#000" : "#F2EBD9",
                 padding: "10px 20px", borderRadius: 99,
                 fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase",
                 fontWeight: 700, textDecoration: "none",
@@ -1059,7 +1048,7 @@ const ExperienceRow = ({ exp, index, isDark, t }: ExperienceRowProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
   const [hovered, setHovered] = useState(false);
-  const accent = isDark ? "#c8f5a0" : "#7c3aed";
+  const accent = isDark ? "#c8f5a0" : "#E3A857";
 
   return (
     <motion.div
@@ -1146,7 +1135,7 @@ const EducationCard = ({ edu, isDark, t }: EducationCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
   const [hovered, setHovered] = useState(false);
-  const accent = isDark ? "#c8f5a0" : "#7c3aed";
+  const accent = isDark ? "#c8f5a0" : "#E3A857";
 
   return (
     <motion.div
@@ -1169,7 +1158,7 @@ const EducationCard = ({ edu, isDark, t }: EducationCardProps) => {
     >
       <div style={{ fontFamily: "monospace", fontSize: 10, letterSpacing: "0.24em", textTransform: "uppercase", color: t.textMuted, marginBottom: 8 }}>{edu.period}</div>
       <h3 style={{ fontSize: "1.5rem", fontWeight: 900, color: t.text, marginBottom: 6, textTransform: "uppercase" }}>{edu.degree}</h3>
-      <div style={{ fontSize: "1rem", fontWeight: 700, color: accent, marginBottom: 12 }}>{edu.school}</div>
+      <div style={{ fontSize: "1rem", fontWeight: 700, color: isDark ? accent : "#2F5D62", marginBottom: 12 }}>{edu.school}</div>
       <p style={{ color: t.textMuted, fontSize: 13, lineHeight: 1.65, margin: 0 }}>{edu.details}</p>
     </motion.div>
   );
@@ -1186,7 +1175,7 @@ const CertificateCard = ({ cert, isDark, t }: CertificateCardProps) => {
   const ref = useRef<HTMLAnchorElement>(null);
   const isInView = useInView(ref, { once: true });
   const [hovered, setHovered] = useState(false);
-  const accent = isDark ? "#ffd6a5" : "#7c3aed";
+  const accent = isDark ? "#ffd6a5" : "#E3A857";
 
   return (
     <motion.a
@@ -1215,7 +1204,7 @@ const CertificateCard = ({ cert, isDark, t }: CertificateCardProps) => {
     >
       <div style={{ fontFamily: "monospace", fontSize: 10, letterSpacing: "0.24em", textTransform: "uppercase", color: t.textMuted, marginBottom: 8 }}>{cert.issuer}</div>
       <h3 style={{ fontSize: "1.3rem", fontWeight: 900, color: t.text, marginBottom: 12, textTransform: "uppercase" }}>{cert.title}</h3>
-      <span style={{ fontFamily: "monospace", fontSize: 11, color: t.accent }}>View Certificate ↗</span>
+      <span style={{ fontFamily: "monospace", fontSize: 11, color: isDark ? t.accent : "#2F5D62", fontWeight: isDark ? 400 : 700 }}>View Certificate ↗</span>
     </motion.a>
   );
 };
